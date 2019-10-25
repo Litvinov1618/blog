@@ -1,33 +1,13 @@
 <template>
-    <div>
-        <h1 class="header">{{header}}</h1>
-        <CreateMsg></CreateMsg>
-        <Posts></Posts>
-    </div>
+    <Router></Router>
 </template>
 
 <script>
-import CreateMsg from './CreateMsg';
-import Posts from './Posts';
-
+import Router from './Router'
 
 export default {
-    data: () => ({
-        header: 'Blog',
-    }),
     components: {
-        CreateMsg,
-        Posts
+        Router
     }
 }
 </script>
-
-<style lang="scss" scoped>
-    .main {
-        width: 80%;
-        margin: 0 auto;
-    }
-    .header {
-        text-align: center;
-    }
-</style>
