@@ -1,13 +1,9 @@
 <template>
-    <div>
-        <a href="/CreateMessage" class="nav">Create message</a>
-        <span v-if="notes.length === 0">Here is no posts, write the first one :)</span>
-        <div class="item" v-for="(note, idx) in notes" :key="idx">
-            <a href="/SinglePost">Look single</a>
-            <span class="date">{{note.date.slice(0,17)}}</span>
-            <h2>{{note.header}}</h2>
-            <p class="text">{{note.text}}</p>
-        </div>
+    <div class="item">
+        <a href="/">Back</a>
+        <span class="date">{{singlePost.date.slice(0,17)}}</span>
+        <h2>{{singlePost.header}}</h2>
+        <p class="text">{{singlePost.text}}</p>
     </div>
 </template>
 
@@ -15,9 +11,10 @@
 import Storage from '../local-storage'
 
 export default {
-    data: () => ({
-        notes: Storage.getItem('notes') || []
-    })
+    data: ()=> ({
+        singlePost: Storage.getItemByIndex(0)
+    }),
+    
 }
 </script>
 
@@ -50,5 +47,3 @@ export default {
     }
 }
 </style>
-
-

@@ -10,8 +10,7 @@
         </template>
         <input type="text" placeholder="Your header" v-model="header" autofocus>
         <textarea rows="10" v-model="message" placeholder="Your text"></textarea>
-        <input type="submit" @click.prevent="pushNote()" class="submit" value="Push" :disabled="message.length < 10 || header < 5">
-        <a href="/" class="nav">Main</a> 
+        <a @click="pushNote()" href="/" class="nav" :disabled="message.length < 10 || header < 5">Push</a>
     </form>
 </template>
 
@@ -48,7 +47,6 @@ textarea {
     resize: none;
     font-size: 1em;
     caret-color: grey;
-
     width: 85%;
 }
 .submit { 
@@ -59,18 +57,11 @@ textarea {
     transition: background-color 0.2s linear;
     font-size: 1em;
     width: 100px;
-
     padding: 10px 20px;
+
     &:hover {
         cursor: pointer;
         background-color: lighten(black, 20%);
-    }
-}
-input[disabled] {
-    background-color: rgba(128, 128, 128, 0.459);
-
-    &:hover {
-        background-color: lighten(rgba(128, 128, 128, 0.459), 20%);
     }
 }
 .notices {
@@ -88,11 +79,19 @@ input[disabled] {
     width: 50px;
     display: block;
     text-align: center;
-
     padding: 10px 20px;
+    
     &:hover {
         cursor: pointer;
         background-color: lighten(black, 20%);
+    }
+}
+.nav[disabled] {
+    pointer-events: none;
+    background-color: rgba(128, 128, 128, 0.459);
+
+    &:hover {
+        background-color: lighten(rgba(128, 128, 128, 0.459), 20%);
     }
 }
 </style>

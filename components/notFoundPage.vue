@@ -1,3 +1,5 @@
 <template>
-    <span>404</span>
+    <div>
+        404 page not found, you fucked up
+    </div>
 </template>

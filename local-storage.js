@@ -5,6 +5,10 @@ const storage = {
     getItem(name) {
         return JSON.parse(localStorage.getItem(name))
     },
+    getItemByIndex (index) {
+        const obj = JSON.parse(localStorage.getItem('notes'));
+        return obj[index]
+    },
     removeItem(name) {
         localStorage.remove(name)
     }

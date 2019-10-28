@@ -7,36 +7,39 @@
 <script>
 import CreateMsg from './CreateMsg';
 import Posts from './Posts';
-import notFoundPage from './notFoundPage';
+import NotFoundPage from './NotFoundPage';
+import SinglePost from './SinglePost'
 
 export default {
     data: () => ({
         routes: {
-            default: notFoundPage,
+            default: NotFoundPage,
             '/': Posts,
-            '/CreateMessage': CreateMsg
+            '/CreateMessage': CreateMsg,
+            '/SinglePost': SinglePost
         },
         href: location.pathname
     }),
     methods: {
         getPage() {
-        return this.routes[this.href] || this.routes.default;
+            return this.routes[this.href] || this.routes.default;
         },
 
         click(event) {
-        if (event.target.tagName !== 'A') return;
+            if (event.target.tagName !== 'A') return;
 
-        const href = event.target.getAttribute('href');
-        if (!href.startsWith('/')) return;
+            const href = event.target.getAttribute('href');
+            if (!href.startsWith('/')) return;
 
-        event.preventDefault();
-        history.pushState(null, null, href);
-        this.href = href;
+            event.preventDefault();
+            history.pushState(null, null, href);
+            this.href = href;
         }
     },
     components: {
         CreateMsg,
-        Posts
+        Posts,
+        SinglePost
     }
 }  
 </script>
